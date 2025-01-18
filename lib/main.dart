@@ -3,64 +3,119 @@ import 'package:google_fonts/google_fonts.dart';
 
 void main() {
 
-  // Class is a widget....
+  // Class is a widget/component....
 
   WidgetsFlutterBinding.ensureInitialized(); // Ensure the binding is initialized
 
   runApp(MaterialApp(
-
-    home: Home(), // Home is a Stateless Widget
+    home: NinjaCard(), // Home is a Stateless Widget
   ));
 }
 
-
-
-// Useful for Hot Reload and make the widget reusable
-class Home extends StatelessWidget {
-  const Home({super.key});
+class NinjaCard extends StatelessWidget {
+  const NinjaCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
+      backgroundColor: Colors.grey[900],
+
       appBar: AppBar(
-        title: Text("LKFD Flutter"),
+        title: Text("LKFD Flutter", style: GoogleFonts.ptSans(
+          color: Colors.white,
+          letterSpacing: 5.0,
+        )),
+
         centerTitle: true,
-        backgroundColor: Colors.blue[100],
+        backgroundColor: Colors.black,
+
       ),
 
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text("Hello World"),
-          TextButton(
-            onPressed: () {},
-            child: Text("Click Me"),
-            style: TextButton.styleFrom(
-              backgroundColor: Colors.amberAccent, // Background color
+        body: Padding(
+        padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
 
+          children: [
+            Center(
+              child: CircleAvatar(
+                backgroundImage: NetworkImage('https://picsum.photos/seed/picsum/200/300'),
+                radius: 130,
+              ),
             ),
-          ),
-          Container(
-            color: Colors.cyan,
-            padding: EdgeInsets.all(30),
-            child: Text("Inside Container"),
-          )
-        ],
-      ),
+            Divider(
+              height: 60,
+              thickness: 3,
+              color: Colors.white,
+            ),
+            Text(
+              'NAME',
+              style: GoogleFonts.roboto(
+                textStyle: TextStyle(
+                  color: Colors.grey,
+                  letterSpacing: 2.0,
+                ),
+              ),
+            ),
+            SizedBox(height: 10), // Add space between the text
+            Text(
+              'Lord Kent F. Dinampo',
+              style: GoogleFonts.roboto(
+                textStyle: TextStyle(
+                  color: Colors.amberAccent[200],
+                  letterSpacing: 2.0,
+                  fontSize: 21,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            SizedBox(height: 30),
+            Text(
+              'CURRENT STATUS',
+              style: GoogleFonts.roboto(
+                textStyle: TextStyle(
+                  color: Colors.grey,
+                  letterSpacing: 2.0,
+                ),
+              ),
+            ),
+            SizedBox(height: 10), // Add space between the text
+            Text(
+              'LEVEL: 8',
+              style: GoogleFonts.roboto(
+                textStyle: TextStyle(
+                  color: Colors.amberAccent[200],
+                  letterSpacing: 2.0,
+                  fontSize: 21,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            SizedBox(height: 30),
+            Row(
+              children: [
+                Icon(
+                  Icons.email,
+                  color: Colors.grey[400],
+                ),
+                SizedBox(width: 10),
+                Text(
+                  "lordkentdinampo@gmail.com",
+                  style: GoogleFonts.roboto(
+                    textStyle: TextStyle(
+                      color: Colors.grey[400],
+                      letterSpacing: 1.0,
+                      fontSize: 18,
+                    ),
+                  ),
+                )
+              ],
+            )
+          ],
+        )
+    )
 
-
-
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Text("Press"),
-        backgroundColor: Colors.blue[100],
-      ),
     );
-
-
-
   }
 }
+
